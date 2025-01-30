@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": "dcfe",
+      "title": "Study",
+      "completed": false
+    },
+    {
+      "id": "8ad9",
+      "title": "Reading",
+      "completed": false
+    },
+    {
+      "id": "5550",
+      "title": "Writing",
+      "completed": false
+    }
+  ]
+}
