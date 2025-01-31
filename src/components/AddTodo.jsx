@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useAddTodoMutation } from "../features/todos/todosApi";
+import { setTitle, clearTitle } from "../app/store";
 
 const AddTodo = () => {
-    const [title, setTitle] = useState('');
+    const dispatch = useDispatch();
+    const title = useSelector((state) => state.todoInput);
     const [addTodo] = useAddTodoMutation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (title) {
             await addTodo({ title, completed: false });
-            setTitle('');
+            dispatch(clearTitle());
         }
     };
 
@@ -19,7 +22,7 @@ const AddTodo = () => {
             <input
                 type="text"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => dispatch(setTitle(e.target.value))}
                 placeholder="Enter To-Do"
             />
             <button type="submit">Add</button>
